@@ -76,22 +76,28 @@ python fuzzer_shortname.py "ffuf -w ./fuzz.txt -u http://example.com/FUZZ" "BENC
 
 #### Main Fuzzer (fuzzer.py)
 ```
--d, --debug             Enable debug mode
--c, --cycles N          Number of fuzzing cycles to run (default: 50)
--m, --model NAME        Ollama model to use (default: qwen2.5-coder:latest)
---prompt-file PATH  Path to prompt file (default: prompts/files.txt)
--o, --output        The output directory for links & ffuf files (default: /tmp/brainstorm)
---status-codes LIST Comma-separated list of status codes to consider successful
-                   (default: 200,301,302,303,307,308,403,401,500)
+  -h, --help            show this help message and exit
+  -d, --debug           Enable debug mode
+  -c, --cycles CYCLES   Number of fuzzing cycles to run (default: 50)
+  -m, --model MODEL     Ollama model to use (default: qwen2.5-coder:latest)
+  -o, --output OUTPUT   The output directory for links & ffuf files (default: /tmp/brainstorm)
+  --prompt-file PROMPT_FILE
+                        Path to prompt file (default: prompts/files.txt)
+  --status-codes STATUS_CODES
+                        Comma-separated list of status codes to consider as successful (default: 200,301,302,303,307,308,403,401,500)
+  -V, --version         show program's version number and exit
 ```
 
 #### Short Filename Fuzzer (fuzzer_shortname.py)
 ```
--d, --debug             Enable debug mode
--c, --cycles N          Number of fuzzing cycles to run (default: 50)
--m, --model NAME        Ollama model to use (default: qwen2.5-coder:latest)
--o, --output        The output directory for links & ffuf files (default: /tmp/brainstorm)
---status-codes LIST Comma-separated list of status codes to consider successful
+  -h, --help            show this help message and exit
+  -d, --debug           Enable debug mode
+  -c, --cycles CYCLES   Number of fuzzing cycles to run (default: 50)
+  -m, --model MODEL     Ollama model to use (default: qwen2.5:latest)
+  -o, --output OUTPUT   The output directory for links & ffuf files (default: /tmp/brainstorm)
+  --status-codes STATUS_CODES
+                        Comma-separated list of status codes to consider as successful (default: 200,301,302,303,307,308,403,401,500)
+  -V, --version         show program's version number and exit
 ```
 
 ### Examples
