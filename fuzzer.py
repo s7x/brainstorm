@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from colorama import init, Fore, Style
 
+__version__: str = '1.1'
+
 # Initialize colorama
 init()
 
@@ -152,10 +154,8 @@ def display_results(tested_links, new_discovered_links):
         print(f"\n{Fore.YELLOW}No new links were discovered{Style.RESET_ALL}")
 
 def main():
-    logger.info("Starting fuzzer application")
-    
     # Set up argument parser
-    parser = argparse.ArgumentParser(description='Web Fuzzer with Ollama integration')
+    parser = argparse.ArgumentParser(description='Web Fuzzer with Ollama integration.', prog='brainstorm', usage='%(prog)s "command" [options]', epilog='Example: brainstorm "ffuf -w ./fuzz.txt -u http://target.com/FUZZ" --cycles 100 --model llama2:latest')
     parser.add_argument('command', help='ffuf command to run')
     parser.add_argument('-d', '--debug', action='store_true', help='Enable debug mode')
     parser.add_argument('-c', '--cycles', type=int, default=50, help='Number of fuzzing cycles to run (default: 50)')
@@ -164,8 +164,11 @@ def main():
     parser.add_argument('--prompt-file', default='prompts/files.txt', help='Path to prompt file (default: prompts/files.txt)')
     parser.add_argument('--status-codes', type=str, default='200,301,302,303,307,308,403,401,500',
                     help='Comma-separated list of status codes to consider as successful (default: 200,301,302,303,307,308,403,401,500)')    
+    parser.add_argument('-V', '--version', action='version', version=f"%(prog)s {__version__}")
 
     args = parser.parse_args()
+
+    logger.info("Starting fuzzer application")
 
     # Parse command line argument
     cmd = sys.argv[1]
