@@ -9,6 +9,8 @@ import argparse
 import random
 from colorama import init, Fore, Style
 
+__version__: str = '1.1'
+
 # Initialize colorama
 init()
 
@@ -112,20 +114,21 @@ def display_results(tested_filenames, new_discovered_filenames):
         print(f"\n{Fore.YELLOW}No new filenames were discovered{Style.RESET_ALL}")
 
 def main():
-    logger.info("Starting shortname fuzzer application")
-    
     # Set up argument parser
-    parser = argparse.ArgumentParser(description='Shortname Fuzzer with Ollama integration')
+    parser = argparse.ArgumentParser(description='Shortname Fuzzer with Ollama integration.', prog='brainstorm-shortname', usage='%(prog)s "command" "filename" [options]', epilog='Example: brainstorm-shortname "ffuf -w ./fuzz.txt -u http://target.com/FUZZ" "document.pdf" --cycles 25')
     parser.add_argument('command', help='ffuf command to run')
     parser.add_argument('filename', help='Filename to use in the prompt')
     parser.add_argument('-d', '--debug', action='store_true', help='Enable debug mode')
     parser.add_argument('-c', '--cycles', type=int, default=50, help='Number of fuzzing cycles to run (default: 50)')
-    parser.add_argument('-m',  Invicti Security '--model', default='qwen2.5-coder:latest', help='Ollama model to use (default: qwen2.5:latest)')
+    parser.add_argument('-m', '--model', default='qwen2.5-coder:latest', help='Ollama model to use (default: qwen2.5:latest)')
     parser.add_argument('-o', '--output', default='/tmp/brainstorm', help='The output directory for links & ffuf files (default: /tmp/brainstorm)')
     parser.add_argument('--status-codes', type=str, default='200,301,302,303,307,308,403,401,500',
-                    help='Comma-separated list of status codes to consider as successful (default: 200,301,302,303,307,308,403,401,500)')    
+                    help='Comma-separated list of status codes to consider as successful (default: 200,301,302,303,307,308,403,401,500)')
+    parser.add_argument('-V', '--version', action='version', version=f"%(prog)s {__version__}")
 
     args = parser.parse_args()
+
+    logger.info("Starting shortname fuzzer application")
 
     # Parse command line argument
     cmd = args.command
