@@ -10,8 +10,11 @@ import random
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from colorama import init, Fore, Style
+import urllib3
 
-__version__: str = '1.1'
+urllib3.disable_warnings()
+
+__version__: str = '1.3'
 
 # Initialize colorama
 init()
