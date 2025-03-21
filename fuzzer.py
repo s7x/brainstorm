@@ -155,7 +155,7 @@ def display_results(tested_links, new_discovered_links):
 
 def main():
     # Set up argument parser
-    parser = argparse.ArgumentParser(description='Web Fuzzer with Ollama integration.', prog='brainstorm', usage='%(prog)s "command" [options]', epilog='Example: brainstorm "ffuf -w ./fuzz.txt -u http://target.com/FUZZ" --cycles 100 --model llama2:latest')
+    parser = argparse.ArgumentParser(description='Web Fuzzer with Ollama integration.', prog='brainstorm', usage='%(prog)s "command" [options]', epilog='Example: brainstorm "ffuf -w ./fuzz.txt -u http://target.com/FUZZ -fc 403 -fw 4" --cycles 100 --model llama2:latest')
     parser.add_argument('command', help='ffuf command to run')
     parser.add_argument('-d', '--debug', action='store_true', help='Enable debug mode')
     parser.add_argument('-c', '--cycles', type=int, default=50, help='Number of fuzzing cycles to run (default: 50)')
