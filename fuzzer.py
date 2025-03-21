@@ -32,7 +32,7 @@ def extract_links(url):
     """Extract first 25 links from the main page"""
     try:
         logger.info(f"Attempting to extract links from {url}")
-        response = requests.get(url)
+        response = requests.get(url, verify=False)
         soup = BeautifulSoup(response.text, 'html.parser')
         links = []
         for a in soup.find_all('a', href=True)[:25]:
