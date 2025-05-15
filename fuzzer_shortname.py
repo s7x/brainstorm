@@ -26,7 +26,7 @@ logging.basicConfig(
 if '--debug' in sys.argv:
     logger.setLevel(logging.DEBUG)
 
-def call_ollama(prompt, model="qwen2.5-coder:latest"):
+def call_ollama(prompt, model):
     """Call the local Ollama API"""
     try:
         logger.info(f"Calling Ollama API with model {model}")
@@ -120,7 +120,7 @@ def main():
     parser.add_argument('filename', help='Filename to use in the prompt')
     parser.add_argument('-d', '--debug', action='store_true', help='Enable debug mode')
     parser.add_argument('-c', '--cycles', type=int, default=50, help='Number of fuzzing cycles to run (default: 50)')
-    parser.add_argument('-m', '--model', default='qwen2.5-coder:latest', help='Ollama model to use (default: qwen2.5:latest)')
+    parser.add_argument('-m', '--model', default='qwen3:4b', help='Ollama model to use (default: qwen2.5:latest)')
     parser.add_argument('-o', '--output', default='/tmp/brainstorm', help='The output directory for links & ffuf files (default: /tmp/brainstorm)')
     parser.add_argument('--status-codes', type=str, default='200,301,302,303,307,308,403,401,500',
                     help='Comma-separated list of status codes to consider as successful (default: 200,301,302,303,307,308,403,401,500)')
