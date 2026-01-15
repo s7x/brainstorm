@@ -1,5 +1,3 @@
-/no_think
-
 You are an AI assistant tasked with brainstorming new potential filenames and directories that could be present on a website based on an existing list. 
 Your goal is to generate a list of 30 new filenames or directories that could potentially exist on this website.
 

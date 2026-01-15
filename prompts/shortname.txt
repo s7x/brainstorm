@@ -1,5 +1,3 @@
-/no_think
-
 You are tasked with guessing the full name of a file based on its 8.3 filename (also called a short filename or SFN). This filename convention was used by old versions of DOS and versions of Microsoft Windows.
 
 An 8.3 filename consists of up to 8 characters for the filename, followed by a period and up to 3 characters for the file extension. If the original filename was longer than 8 characters, it was typically truncated and a tilde (~) followed by a number was added.
