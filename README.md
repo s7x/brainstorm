@@ -39,11 +39,11 @@ There are 2 tools:
 
 ## Local Ollama models
 
-By default, the tool is using the model `qwen3:4b`. 
+By default, the tool is using the model `qwen3:4b-instruct`. 
 This model (or other models you want to use) needs to be downloaded first.
 
 ```bash
-ollama pull qwen3:4b
+ollama pull qwen3:4b-instruct
 ```
 
 ## Installation
@@ -79,7 +79,7 @@ python fuzzer_shortname.py "ffuf -w ./fuzz.txt -u http://example.com/FUZZ" "BENC
   -h, --help            show this help message and exit
   -d, --debug           Enable debug mode
   -c, --cycles CYCLES   Number of fuzzing cycles to run (default: 50)
-  -m, --model MODEL     Ollama model to use (default: qwen3:4b)
+  -m, --model MODEL     Ollama model to use (default: qwen3:4b-instruct)
   -o, --output OUTPUT   The output directory for links & ffuf files (default: /tmp/brainstorm)
   --prompt-file PROMPT_FILE
                         Path to prompt file (default: prompts/files.txt)
@@ -93,7 +93,7 @@ python fuzzer_shortname.py "ffuf -w ./fuzz.txt -u http://example.com/FUZZ" "BENC
   -h, --help            show this help message and exit
   -d, --debug           Enable debug mode
   -c, --cycles CYCLES   Number of fuzzing cycles to run (default: 50)
-  -m, --model MODEL     Ollama model to use (default: qwen2.5:latest)
+  -m, --model MODEL     Ollama model to use (default: qwen3:4b-instruct)
   -o, --output OUTPUT   The output directory for links & ffuf files (default: /tmp/brainstorm)
   --status-codes STATUS_CODES
                         Comma-separated list of status codes to consider as successful (default: 200,301,302,303,307,308,403,401,500)

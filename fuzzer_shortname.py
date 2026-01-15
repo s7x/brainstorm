@@ -9,7 +9,7 @@ import argparse
 import random
 from colorama import init, Fore, Style
 
-__version__: str = '1.1'
+__version__: str = '1.4'
 
 # Initialize colorama
 init()
@@ -116,12 +116,12 @@ def display_results(tested_filenames, new_discovered_filenames):
 
 def main():
     # Set up argument parser
-    parser = argparse.ArgumentParser(description='Shortname Fuzzer with Ollama integration.', prog='brainstorm-shortname', usage='%(prog)s "command" "filename" [options]', epilog='Example: brainstorm-shortname "ffuf -w ./fuzz.txt -u http://target.com/FUZZ" "document.pdf" --cycles 25')
+    parser = argparse.ArgumentParser(description='Shortname Fuzzer with Ollama integration.', prog='brainstorm-shortname', usage='%(prog)s "command" "filename" [options]', epilog=f'Examples: brainstorm-shortname "ffuf -w ./fuzz.txt -u http://target.com/FUZZ" "document.pdf" (or instead of "document.pdf" a shortname like "BENCHM~1.PY") --cycles 25')
     parser.add_argument('command', help='ffuf command to run')
     parser.add_argument('filename', help='Filename to use in the prompt')
     parser.add_argument('-d', '--debug', action='store_true', help='Enable debug mode')
     parser.add_argument('-c', '--cycles', type=int, default=50, help='Number of fuzzing cycles to run (default: 50)')
-    parser.add_argument('-m', '--model', default='qwen3:4b', help='Ollama model to use (default: qwen3:4b)')
+    parser.add_argument('-m', '--model', default='qwen3:4b-instruct', help='Ollama model to use (default: qwen3:4b-instruct)')
     parser.add_argument('-o', '--output', default='/tmp/brainstorm', help='The output directory for links & ffuf files (default: /tmp/brainstorm)')
     parser.add_argument('--status-codes', type=str, default='200,301,302,303,307,308,403,401,500',
                     help='Comma-separated list of status codes to consider as successful (default: 200,301,302,303,307,308,403,401,500)')
