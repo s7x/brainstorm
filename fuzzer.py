@@ -76,7 +76,8 @@ def call_ollama(prompt, model):
                                 json={
                                     "model": model,
                                     "prompt": prompt,
-                                    "stream": False
+                                    "stream": False,
+                                    "think": False
                                 })
         response.raise_for_status()
         result = response.json()['response']
